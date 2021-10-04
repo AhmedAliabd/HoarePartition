@@ -1,14 +1,28 @@
 package com.company;
 
 public class QuickSort {
+    static void Swap(int[] array,
+                     int position1,
+                     int position2)
+    {
+        // Swaps elements in an array
 
+        // Copy the first position's element
+        int temp = array[position1];
+
+        // Assign to the second element
+        array[position1] = array[position2];
+
+        // Assign to the first element
+        array[position2] = temp;
+    }
 
     static int HoarePartition(int[] arr, int left, int right)
     {
         int pivot = arr[left];
-        int i = left - 1, j = right + 1;
+        int i = left, j = right + 1;
 
-        while (true) {
+        do {
             // Find leftmost element greater
             // than or equal to pivot
             do {
@@ -20,17 +34,17 @@ public class QuickSort {
             do {
                 j--;
             } while (arr[j] > pivot);
+            Swap(arr,i,j);
+        } while(i<=j);
 
-            // If two pointers met.
-            if (i >= j)
-                return j;
+        Swap(arr,i,j);
+        Swap(arr,left,j);
+        return j;
 
-            // swap(arr[i], arr[j]);
-            int temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
-        }
     }
+    // If two pointers met.
+//    if (i >= j)
+//            return j;
     static void quickSort(int[] arr, int left, int right)
     {
         if (left < right) {
@@ -38,13 +52,13 @@ public class QuickSort {
 
             // Separately sort elements before
             // partition and after partition
-            quickSort(arr, left, s);
+            quickSort(arr, left, s-1);
             quickSort(arr, s + 1, right);
         }
     }
-    static void printArray(int[] arr, int n)
+    static void printArray(int[] arr)
     {
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < arr.length; i++)
             System.out.print(" " + arr[i]);
         System.out.println();
     }
