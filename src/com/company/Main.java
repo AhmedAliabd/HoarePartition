@@ -24,10 +24,10 @@ public class Main {
         int x4[] = {1,2,3,4,5,6,7};
 
         startTime = System.nanoTime();
-        QuickSort.quickSort(x1,0,x1.length-1);
+        QuickSort.quickSort(x3,0,x3.length-1);
         endTime = System.nanoTime();
         timeElapsed = endTime - startTime;
-        QuickSort.printArray(x1);
+        QuickSort.printArray(x3);
         System.out.println("Time to Run : " + timeElapsed);
         System.out.println("====================================================================");
         TimeUnit.SECONDS.sleep(3);
